@@ -6,14 +6,12 @@ from flask import Flask, render_template, request, redirect
 import mysql.connector
 
 app = Flask(__name__)
-
 db = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="0411",
-    database="student_course_db"
+    host=os.getenv("DB_HOST"),
+    user=os.getenv("DB_USER"),
+    password=os.getenv("DB_PASSWORD"),
+    database=os.getenv("DB_NAME")
 )
-
 cursor = db.cursor()
 
 @app.route('/')
